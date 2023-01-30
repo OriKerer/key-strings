@@ -3,6 +3,7 @@
 	import { drawLine } from './draw'
 	import type { Point } from './draw'
 	import { getKeyPosition, init } from './keys'
+	import { fade, fly } from 'svelte/transition'
 	import * as svgCanvas from './canvas-svg'
 
 	// Global requestAnimationFrame ID so we can cancel it when user clicks on "Draw again"
@@ -10,6 +11,7 @@
 	let canvas: HTMLCanvasElement
 	let ctx: CanvasRenderingContext2D
 	let input: HTMLInputElement
+	let inputValue: string
 
 	const onInput = (e: Event) => draw((e.target as HTMLInputElement).value)
 
@@ -81,9 +83,11 @@
 			Key ⌨️<br /> &nbsp &nbsp Strings 🧶
 		</h1>
 	</div>
+
 	<div class="mt-5 flex justify-center">
 		<input
 			bind:this={input}
+			bind:value={inputValue}
 			placeholder="Start Typing..."
 			maxlength="256"
 			on:input={onInput}
@@ -94,8 +98,15 @@
 		  "
 		/>
 	</div>
+	{#if inputValue && inputValue.length > 1}
+		<button
+			class=" bg-sky-900/40 shadow-2xl rounded-full w-fit mx-auto mt-3"
+			on:click={saveSvg}
+			in:fly={{ duration: 500, y: 50, delay: 0 }}
+			out:fade
+		>
+			<h2 class="text-2xl font-bold  text-indigo-50 text-start p-1 px-5">Download</h2>
+		</button>
+	{/if}
 	<canvas class=" m-auto w-3/4 h-fit" bind:this={canvas} width="1500" height="1500" />
-	<button class=" bg-sky-900/40 shadow-2xl rounded-full w-fit mx-auto mt-3" on:click={saveSvg}>
-		<h2 class="text-2xl font-bold  text-indigo-50 text-start p-1 px-5">Download</h2>
-	</button>
 </div>
