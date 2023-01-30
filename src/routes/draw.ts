@@ -71,14 +71,12 @@ export function drawLine(
       y: currentPoint.y + deltaVector.y,
     }
 
-    let newStartingLength = 0
     let isFinished = false
 
     const startToNextPointDistance = getDistanceBetweenPoints(startPoint, nextPoint)
 
     // The next point is past the end point
     if (startToNextPointDistance >= startToEndDistance) {
-      newStartingLength = startToNextPointDistance - startToEndDistance
       isFinished = true
       nextPoint = endPoint
     }

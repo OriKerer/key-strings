@@ -15,7 +15,7 @@ const keyMapHebrew = [
 
 const keyLinesOffset = [0, 0.25, 0.75, 5]
 
-const keysToPosition = {}
+const keysToPosition: { [id: string]: Point; } = {}
 
 let keySize = 10
 const paddingKeys = 2
