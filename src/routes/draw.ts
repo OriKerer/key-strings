@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const FRAME_DURATION = 1000 / 60 // 60fps frame duration ~16.66ms
 
 export type Point = {
@@ -84,13 +85,19 @@ export function drawLine(
     const NATIVE_RES = 512 // the minimum resolution we reasonably expect
     const LINE_WIDTH = 1   // pixel width of the line at that resolution
     const actualLineWidth = LINE_WIDTH * (Math.max(canvas.width, canvas.height) / NATIVE_RES)
-    ctx.lineWidth = actualLineWidth
+    ctx.lineWidth = actualLineWidth;
+    (window as any).C3S.lineWidth = actualLineWidth
 
     // Draw line segment
     ctx.beginPath()
     ctx.moveTo(currentPoint.x, currentPoint.y)
     ctx.lineTo(nextPoint.x, nextPoint.y)
-    ctx.stroke()
+    ctx.stroke();
+
+    (window as any).C3S.beginPath();
+    (window as any).C3S.moveTo(currentPoint.x, currentPoint.y);
+    (window as any).C3S.lineTo(nextPoint.x, nextPoint.y);
+    (window as any).C3S.stroke()
 
     if (isFinished) {
       if (onAnimationEnd) {
