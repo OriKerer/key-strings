@@ -29,12 +29,14 @@
 	})
 
 	function draw(s: string) {
+		cancelAnimationFrame(rafID)
 		if (s.length < 2) {
+			canvas.style.opacity = '0'
 			ctx.clearRect(0, 0, canvas.width, canvas.height)
 			return
 		}
+		canvas.style.opacity = '100'
 		// Cancel previous animation
-		cancelAnimationFrame(rafID)
 		s = s.toLowerCase()
 		// Clear canvas
 		ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -79,8 +81,8 @@
 
 <div class="justify-center border-2 border-blue-600  m-auto h-full w-full bg-sky-50 text-center">
 	<div class="bg-sky-900/60 shadow-2xl backdrop-blur-sm rounded-full w-fit m-auto mt-3">
-		<h1 class="text-3xl font-bold  m-10 p-1 pb-3 text-indigo-50 text-start px-3">
-			Key ⌨️<br /> &nbsp &nbsp Strings 🧶
+		<h1 class="text-3xl font-bold  m-10 pt-1 pb-3 text-indigo-50 text-start  pl-6">
+			Key ⌨️<br /> &nbsp Strings 🧶
 		</h1>
 	</div>
 
