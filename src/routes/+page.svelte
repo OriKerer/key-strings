@@ -81,7 +81,7 @@
 
 <div class="justify-center border-2 border-blue-600  m-auto h-full w-full bg-sky-50 text-center">
 	<div class="bg-sky-900/60 shadow-2xl backdrop-blur-sm rounded-full w-fit m-auto mt-3">
-		<h1 class="text-3xl font-bold  m-10 pt-1 pb-3 text-indigo-50 text-start  pl-6">
+		<h1 class="text-3xl font-bold  m-10 pt-1 pb-3 text-indigo-50 text-start  pl-5">
 			Key ⌨️<br /> &nbsp Strings 🧶
 		</h1>
 	</div>
